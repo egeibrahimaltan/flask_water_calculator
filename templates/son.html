@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Su Tüketimi Verimlilik Değerlendiricisi</title>
+  <link rel="stylesheet" href="../../static/css/son.css"> <!-- Güncellenmiş CSS dosyası -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__text">
+      <h1>Evdeki Su Tüketiminizi Hesaplayın!</h1>
+      <p>Su verimliliğinizi artırarak kaynakları koruyun!</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="buttons">
+      <a href="{{ url_for('shower') }}"><button type="button">Form</button></a>
+    </div>    
+    <!-- Su Tüketimi Sonuç Bölümü -->
+    <div class="main__rez" id="end">
+      {% if result is defined and result <= 100 %}
+      <span></span>
+      <span></span>
+      {% elif result is defined and result > 200 and result < 300 %}
+      <img class="rez__img" alt="Orta Su Verimliliği">
+      <span>Sonucunuz {{ result }} Litre</span>
+      <span>Evdeki su tüketimi orta düzeyde verimlidir.</span>
+      <a href="{{ url_for('form') }}"> Form'u doldurun.</a>
+      {% elif result >= 300 %}
+      <img class="rez__img" alt="Düşük Su Verimliliği">
+      <span>Sonucunuz {{ result }} Litre</span>
+      <span>Evdeki su tüketimi verimliliği düşüktür!</span>
+      {% else %}
+      {% endif %}
+    </div>
+
+    <!-- Su Tüketimi İlerleme Çubukları Bölümü -->
+    <div class="wrapper">
+      <div class="card">
+        <div class="circle">
+          <div class="bar" id="dailyWaterUsage"></div>
+          <div class="box"><span></span></div>
+        </div>
+        <div class="text">Günlük Tüketim</div>
+      </div>
+      <div class="card">
+        <div class="circle">
+          <div class="bar" id="weeklyWaterUsage"></div>
+          <div class="box"><span></span></div>
+        </div>
+        <div class="text">Haftalık Tüketim</div>
+      </div>
+      <div class="card">
+        <div class="circle">
+          <div class="bar" id="monthlyWaterUsage"></div>
+          <div class="box"><span></span></div>
+        </div>
+        <div class="text">Aylık Tüketim</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <!-- Buraya footer içeriği ekleyin -->
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      function initWaterProgressBar(selector, value) {
+        $(selector).circleProgress({
+          startAngle: -1.55,
+          size: 150,
+          value: value,
+          fill: {gradient: ['#4ba3c7', '#3870a1']}
+        }).on('circle-animation-progress', function(event, progress, stepValue){
+          $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+        });
+      }
+
+      // Mock değerler ile her bir ilerleme çubuğunu başlatın
+      initWaterProgressBar("#dailyWaterUsage", 0.55); // Günlük su tüketimi için örnek değer
+      initWaterProgressBar("#weeklyWaterUsage", 0.75); // Haftalık su tüketimi için örnek değer
+      initWaterProgressBar("#monthlyWaterUsage", 0.90); // Aylık su tüketimi için örnek değer
+    });
+  </script>
+</body>
+</html>

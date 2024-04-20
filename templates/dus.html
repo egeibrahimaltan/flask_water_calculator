@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Su Hesaplama</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__text">
+          <h1>Evinizin su tüketimini hesaplayın!</h1>
+          <p>Girişimde bulunun ve aşırı su tüketimi sorununu çözün</p>
+        </div>
+      </header>
+    <!-- CARD SECTION -->
+    <main>
+        <div class="card-list">
+            <a href="{{ url_for('shower_duration', size='5') }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/dus.png') }}" alt="5 Minute Shower">
+                <span class="developer">5 DK</span>
+                <h3>Duş alma süreniz kaç DK?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('shower_duration', size='15-25') }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/dus.png') }}" alt="15-25 Minute Shower">
+                <span class="designer">15-25 DK</span>
+                <h3>Duş alma süreniz kaç DK?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('shower_duration', size='30+') }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/dus.png') }}" alt="30+ Minute Shower">
+                <span class="editor">30+ DK</span>
+                <h3>Duş alma süreniz kaç DK?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

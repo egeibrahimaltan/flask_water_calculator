@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registration Form in HTML CSS</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="../static/css/form.css" />
+  </head>
+  <body>
+    <main>
+    {% block content %}
+    <section class="container">
+      <header>Form</header>
+      <form action="{{ url_for('submit_form') }}" method="post" class="form">
+        <div class="input-box">
+          <label>Adınız</label>
+          <input type="text" name="name" id="name" placeholder="Adınız" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="email" id="email" name="email" placeholder="E-mail " required />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Telefon Numarası</label>
+            <input type="tel" name="phone_number" id="phone_number" placeholder="Telefon numarası" required />
+          </div>
+          <div class="input-box">
+            <label>Doğum Tarihi</label>
+            <input type="date" name="date" id="date" placeholder="Doğum Tarihi" required />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Cinsiyet</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Erkek</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Kadın</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="other" name="gender" value="other" />
+              <label for="other">Belirtmek istemiyorum</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Adres</label>
+          <input type="text" name="address" id="address" placeholder="Adresinizi Girin" required />
+          <input type="text" name="address" id="address" placeholder="2. Adresinizi Girin" required />
+          <div class="column">
+            <div class="select-box">
+              <select id="options" name="selected_options" >
+                <option hidden>Ülke</option>
+                <option>Türkiye</option>
+                <option>Rusya</option>
+                <option>Çin</option>
+                <option>Avusturalya</option>
+              </select>
+            </div>
+            <input type="text" name="city" id="city" placeholder="İl" required />
+          </div>
+          <div class="column">
+            <input type="text" name="region" id="region" placeholder="Bölge" required />
+            <input type="text"  name="posta" id="posta"  placeholder="posta kodu" required />
+          </div>
+        </div>
+        <button name="submit" id="submit" type="submit">Gönder</button>
+      </form>
+    </section>
+    {% endblock %}
+    </main>
+  </body>
+</html>

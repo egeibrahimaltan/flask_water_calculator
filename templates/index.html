@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Su Hesaplama</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__text">
+          <h1>Evinizin su tüketimini hesaplayın!</h1>
+          <p>Girişimde bulunun ve aşırı su tüketimi sorununu çözün</p>
+        </div>
+    </header>
+    <!--CARD KISMI-->
+    <main>
+        <div class="card-list">
+            <a href="{{ url_for('people_count', count=1) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/user.jpg') }}" alt="1 Person">
+                <span class="developer">1</span>
+                <h3>Evde kaç kişi yaşıyorsunuz?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('people_count', count=3) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/user.jpg') }}" alt="2-4 People">
+                <span class="designer">2-4</span>
+                <h3>Evde kaç kişi yaşıyorsunuz?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('people_count', count=5) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/user.jpg') }}" alt="5+ People">
+                <span class="editor">5+</span>
+                <h3>Evde kaç kişi yaşıyorsunuz?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

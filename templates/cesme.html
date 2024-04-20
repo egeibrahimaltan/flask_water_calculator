@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Su Hesaplama - Water Consumption Calculator</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__text">
+            <h1>Evinizin su tüketimini hesaplayın!</h1>
+            <p>Girişimde bulunun ve aşırı su tüketimi sorununu çözün</p>
+        </div>
+    </header>
+    <!-- CARD SECTION -->
+    <main>
+        <div class="card-list">
+            <!-- Ensure that `size` is defined correctly in Flask before using it here -->
+            <a href="{{ url_for('faucet_selection', size='small', faucets=3) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/musluk2.png') }}" alt="Option for 3 faucets">
+                <span class="developer">3</span>
+                <h3>Evinizde kaç tane Çeşme var?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('faucet_selection', size='medium', faucets=5) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/musluk2.png') }}" alt="Option for 3 to 5 faucets">
+                <span class="designer">3-5</span>
+                <h3>Evinizde kaç tane Çeşme var?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+            <a href="{{ url_for('faucet_selection', size='large', faucets=7) }}" class="card-item">
+                <img src="{{ url_for('static', filename='img/musluk2.png') }}" alt="Option for more than 7 faucets">
+                <span class="editor">7+</span>
+                <h3>Evinizde kaç tane Çeşme var?</h3>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right card-icon"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

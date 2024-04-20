@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Gönmderildi</title>
+    <link rel="stylesheet" href="/static/css/form_result.css">
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: lime;
+        }
+
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% block content%}
+    <div id="typewriter">
+        <h1 id="title"></h1>
+        <p id="name"></p>
+        <p id="email"></p>
+        <p id="date"></p>
+        <p id="address"></p>
+        <p id="phone_number"></p>
+        <p id="gender"></p>
+        <p id="selected_options"></p>
+        <p id="region"></p>
+        <p id="city"></p>
+    </div>
+    {%endblock%}
+
+    <script>
+        var data = {
+            title: "Form Başarıyla Gönderildi",
+            name: "isminiz: " + "{{name}}",
+            email: "E-mail adresiniz: " + "{{email}}",
+            date: "Tarih: " + "{{date}}",
+            address: "Addres: " + "{{address}}",
+            phone_number: "Telefon numarası: " + "{{phone_number}}",
+            gender: "Cinsiyet: " + "{{gender}}",
+            selected_options: "Ülke: " + "{{selected_options}}",
+            region: "il: " + "{{region}}",
+            city: "İlçe: " + "{{city}}"
+        };
+
+        var i = 0;
+        var speed = 50;
+        var keys = Object.keys(data);
+
+        function typeWriter() {
+            if (i < keys.length) {
+                var txt = data[keys[i]];
+                var element = document.getElementById(keys[i]);
+                typeElement(element, txt, 0, function() {
+                    i++;
+                    typeWriter();
+                });
+            }
+        }
+
+        function typeElement(element, txt, j, callback) {
+            if (j < txt.length) {
+                element.innerHTML += txt.charAt(j);
+                j++;
+                setTimeout(function() {
+                    typeElement(element, txt, j, callback);
+                }, speed);
+            } else {
+                callback();
+            }
+        }
+
+        typeWriter();
+    </script>
+</body>
+</html>
